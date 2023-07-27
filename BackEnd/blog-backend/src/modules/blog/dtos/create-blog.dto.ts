@@ -11,5 +11,5 @@ export class CreateBlogDTO {
 
   @IsNotEmpty({ message: 'author Id required required' })
   @IsString()
-  author_id: string;
+  author: string;
 }

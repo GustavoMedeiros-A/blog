@@ -11,9 +11,9 @@ export class UserService {
     return this.userRepository.findAll();
   }
 
-  public create(data: CreateUserDTO) {
+  public async create(data: CreateUserDTO) {
     try {
-      const username = this.userRepository.findByName(data.name);
+      const username = await this.userRepository.findByName(data.name);
 
       if (username) {
         throw new Error(`User ${username} already exists`);

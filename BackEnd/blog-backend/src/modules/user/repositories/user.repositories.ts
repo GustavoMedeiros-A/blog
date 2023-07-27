@@ -21,6 +21,10 @@ export class UserRepository implements IuserRepository<UserDocument> {
     return await this.model.findOne(query ?? {});
   }
 
+  async findById(id: string) {
+    return await this.model.findById(id);
+  }
+
   async findByName(name: string): Promise<UserDocument> {
     return await this.model.findOne({ name: name });
   }

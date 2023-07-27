@@ -22,7 +22,7 @@ export class Blog {
   description: string;
 
   @Prop({ type: [Types.ObjectId], ref: 'User', required: true })
-  author_id: string;
+  author: string;
 }
 
 export const BlogSchema = SchemaFactory.createForClass(Blog);
