@@ -10,3 +10,7 @@ export const createBlog = async (data: Omit<ISaveBlog, "id">) => {
   const { data: createBlog } = await httpClient.post<IBlog>(`blog`, data);
   return createBlog;
 };
+
+export const removeBlog = async (id: string | number) => {
+  return await httpClient.delete<IBlog>(`blog/${id}`);
+};

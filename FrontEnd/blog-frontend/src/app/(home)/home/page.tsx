@@ -12,11 +12,13 @@ import { useForm } from "react-hook-form";
 import { Form, Icon } from "semantic-ui-react";
 import { IBlog } from "@/interface/blog.interface";
 import { useCreateBlog } from "@/hooks/blog/use-create-blog";
+import { useRemoveBlog } from "@/hooks/blog/use-delete-blog";
 
 export default function Home() {
   const users = useGetUsers();
   const blogs = useGetBlogs();
   const { save } = useCreateBlog();
+  const { remove, isLoading } = useRemoveBlog();
 
   const { reset, handleSubmit, register, getValues } = useForm<IBlog>();
 
@@ -109,7 +111,14 @@ export default function Home() {
               <Typography color="white">
                 Write by: {blog.author.map((author) => author.name)}
               </Typography>
-              <Button backgroundColor="#df4759" width="15%">
+              <Button
+                backgroundColor="#df4759"
+                width="15%"
+                onClick={async () => {
+                  console.log(blog.id);
+                  await remove(blog.id);
+                }}
+              >
                 Remove
               </Button>
             </FlexContainer>
