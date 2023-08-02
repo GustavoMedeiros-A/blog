@@ -4,5 +4,12 @@ export interface IBlog {
   id: number | string;
   title: string;
   description: string;
-  author: IUser;
+  author: IUser[];
+}
+
+export interface ISaveBlog {
+  id?: number | string;
+  title: string;
+  description?: string;
+  author?: IUser[];
 }

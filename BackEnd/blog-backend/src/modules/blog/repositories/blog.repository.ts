@@ -16,7 +16,8 @@ export class BlogRepository implements IBlogRepository<BlogDocument> {
   async findAll(): Promise<BlogDocument[]> {
     return await this.blogModel
       .find()
-      .populate({ path: 'author', model: this.userModel });
+      .populate({ path: 'author', model: this.userModel })
+      .exec();
   }
 
   async create(data: CreateBlogDTO) {
